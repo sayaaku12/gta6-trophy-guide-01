@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Guide — GTA VI · PS5 · All 55 Trophies</title>
+<meta name="description" content="Offline guide and tracker for all 55 Grand Theft Auto VI PlayStation 5 trophies: checklist, roadmap to the platinum, missables, and a cited guide for every trophy.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23c2410c'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='32' font-weight='bold' fill='white' text-anchor='middle'%3EVI%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="paper">
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">VI</div>
+    <div>
+      <h1>Leonida Trophy Guide</h1>
+      <p class="subtitle">Grand Theft Auto VI · PlayStation 5 · all 55 trophies · works offline</p>
+    </div>
+  </div>
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-numbers"><strong id="earned-count">0</strong><span> / 55 earned</span></div>
+    <div class="progress-bar" role="progressbar" aria-label="Trophies earned" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-sub" id="progress-sub">Platinum 0/1 · Gold 0/2 · Silver 0/6 · Bronze 0/46</div>
+  </div>
+  <div class="top-actions">
+    <button id="spoiler-btn" type="button" aria-pressed="false" title="Hide story trophy names until earned (S)">Spoilers: off</button>
+    <button id="theme-btn" type="button" title="Switch paper / night theme (T)">Night theme</button>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Guide sections">
+  <button class="tab active" data-view="checklist" type="button">1 · Checklist</button>
+  <button class="tab" data-view="roadmap" type="button">2 · Roadmap to Platinum</button>
+  <button class="tab" data-view="missables" type="button">3 · Missables</button>
+  <button class="tab" data-view="nextup" type="button">4 · Next up</button>
+</nav>
+
+<main>
+  <section id="view-checklist" class="view active" aria-label="Trophy checklist">
+    <div class="filters" id="filters">
+      <label class="search-box">Search <input id="search" type="search" placeholder="Trophy, mission or keyword…  ( / )" autocomplete="off"></label>
+      <div class="filter-group" role="group" aria-label="Filter by kind">
+        <button class="kind-btn active" data-kind="all" type="button">All kinds</button>
+        <button class="kind-btn" data-kind="story" type="button">Story</button>
+        <button class="kind-btn" data-kind="collectibles" type="button">Collectibles</button>
+        <button class="kind-btn" data-kind="activities" type="button">Activities</button>
+      </div>
+      <label>Grade
+        <select id="grade-filter">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label>Show
+        <select id="earned-filter">
+          <option value="all">All trophies</option>
+          <option value="todo">Not earned yet</option>
+          <option value="earned">Earned only</option>
+        </select>
+      </label>
+      <label class="check-label"><input id="missable-only" type="checkbox"> Missable only</label>
+      <label class="check-label"><input id="hide-hidden" type="checkbox"> Hide hidden trophies</label>
+      <div class="save-actions">
+        <button id="export-btn" type="button">Export progress</button>
+        <label class="import-btn">Import progress <input id="import-file" type="file" accept="application/json"></label>
+        <button id="reset-btn" type="button">Reset</button>
+      </div>
+    </div>
+    <p class="list-meta" id="list-meta">55 trophies</p>
+    <div class="checklist-layout">
+      <ul class="trophy-list" id="trophy-list"></ul>
+      <aside class="guide-pane" id="guide-pane" aria-label="Trophy guide">
+        <p class="guide-empty" id="guide-empty">Select a trophy on the left to read its guide, sources and PSN count.</p>
+        <div class="guide-body" id="guide-body" hidden>
+          <div class="guide-head">
+            <span class="grade-badge" id="guide-grade">Bronze</span>
+            <span class="kind-tag" id="guide-kind">Activities</span>
+            <span class="hidden-tag" id="guide-hidden" hidden>Hidden on PSN</span>
+            <span class="missable-tag" id="guide-missable" hidden>Missable</span>
+          </div>
+          <h2 id="guide-name"></h2>
+          <p class="guide-desc" id="guide-desc"></p>
+          <p class="guide-target"><strong>Target:</strong> <span id="guide-target"></span></p>
+          <p class="guide-psn"><strong>PSN:</strong> <span id="guide-psn"></span></p>
+          <h3>How to get it</h3>
+          <p class="guide-text" id="guide-text"></p>
+          <p class="guide-unconfirmed" id="guide-unconfirmed" hidden>Unconfirmed: the exact trigger for this trophy has not been pinned down yet. Do not trust a named location or step until a source confirms it.</p>
+          <h3>Sources</h3>
+          <ul class="guide-sources" id="guide-sources"></ul>
+          <label class="note-label">Your note
+            <textarea id="guide-note" rows="3" placeholder="e.g. tried at gate E3 — save first"></textarea>
+          </label>
+          <div class="guide-actions">
+            <button id="guide-earned" type="button">Mark earned</button>
+            <button id="guide-prev" type="button">← Prev</button>
+            <button id="guide-next" type="button">Next →</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="view-roadmap" class="view" aria-label="Roadmap to the platinum">
+    <h2>The road to <span class="platinum-name">Vice Got a Price!</span></h2>
+    <p class="lede">One playthrough, about 200 hours, difficulty 4/10 (PowerPyx). No mission replay, no New Game+, no online trophies — everything is single-player. Work the three phases in order; the checklist below tracks each phase live.</p>
+    <div class="roadmap-grid" id="roadmap-grid"></div>
+    <p class="honest-note"><strong>Honest note:</strong> Rockstar has not published its own trophy list. “Official” here means the PSN-published list as frozen on 2026-11-18 by Exophase and PSNProfiles, which agree on all 55 names, descriptions and grades. PSN counts are from Exophase, 2026-11-19.</p>
+  </section>
+
+  <section id="view-missables" class="view" aria-label="Missable trophies">
+    <h2>Missables — read this before you play</h2>
+    <p class="lede">Only one trophy can truly be missed. Everything else can be cleaned up after the story. Keep a save from Chapter 1 and you are safe.</p>
+    <div class="missable-hero" id="missable-hero"></div>
+    <h3>Time-sensitive — do these on time</h3>
+    <ul class="warn-list" id="warn-list"></ul>
+    <h3>Unconfirmed triggers — labelled, not guessed</h3>
+    <p>Five hidden trophies plus Fair Game have no confirmed exact trigger yet. Their guides say so plainly; this guide never invents a location or a step.</p>
+    <ul class="warn-list" id="unconfirmed-list"></ul>
+    <h3>Cheats warning</h3>
+    <p>There are 61 cheats, all unlocking after the story. Using one disables trophies and saving for the current session (GTABase). Never cheat while a trophy is on the line.</p>
+  </section>
+
+  <section id="view-nextup" class="view" aria-label="Next up planner">
+    <h2>Next up — what to do next</h2>
+    <p class="lede">The five best next trophies for where you are now, in roadmap order, easiest first. Tick them off and this list rebuilds itself.</p>
+    <ol class="nextup-list" id="nextup-list"></ol>
+    <p class="nextup-note">Ranking: your current roadmap phase first, then the trophies the most PSN players have already earned. Story trophies come in story order; the one missable trophy is always pinned to the top while Chapter 1 is still open.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Trophy Guide — an unofficial, fan-made guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide uses no Rockstar logo, artwork, box art or game screenshots. Trophy names and descriptions are shown as PlayStation publishes them. Sources: Exophase (names, descriptions, grades, PSN counts), PSNProfiles (counts and grades), PowerPyx and GTABase via OutputLag and GTA-Zone (methods, roadmap, missables). Built for the make.fun bounty <a href="https://make.fun/bounty/gta6-trophy-guide-01">gta6-trophy-guide-01</a>.</p>
+  <p class="keys">Keyboard: <kbd>/</kbd> search · <kbd>1</kbd>–<kbd>4</kbd> sections · <kbd>S</kbd> spoilers · <kbd>T</kbd> theme · <kbd>↑</kbd><kbd>↓</kbd> move in the list · <kbd>Enter</kbd> open guide · <kbd>Space</kbd> tick a trophy</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
